@@ -122,8 +122,10 @@ module Catapult
         component_dir = "#{base_config_target_dir}/#{component_ref}"
         info.each_pair do |path, content|
           full_path = "#{component_dir}/#{path}"
-          FileUtils.mkdir_p(directory_part(full_path))
-          File.open(full_path, 'w') { |f| f << content }
+          unless File.exists?(full_path)
+            FileUtils.mkdir_p(directory_part(full_path))
+            File.open(full_path, 'w') { |f| f << content }
+          end
         end
       end
     end
