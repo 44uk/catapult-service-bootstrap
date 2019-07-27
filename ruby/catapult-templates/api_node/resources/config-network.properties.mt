@@ -59,6 +59,10 @@ maxSecretLockDuration = 30d
 minProofSize = 1
 maxProofSize = 1000
 
+[plugin:catapult.plugins.metadata]
+
+maxValueSize = 1024
+
 [plugin:catapult.plugins.mosaic]
 
 maxMosaicsPerAccount = 10'000
@@ -77,10 +81,12 @@ maxCosignedAccountsPerAccount = 5
 [plugin:catapult.plugins.namespace]
 
 maxNameSize = 64
+maxNamespaceDepth = 3
 
 # *approximate* days based on blockGenerationTargetTime
+minNamespaceDuration = 1m
 maxNamespaceDuration = 365d
-namespaceGracePeriodDuration = 0d
+namespaceGracePeriodDuration = 2m
 reservedRootNamespaceNames = xem, nem, user, account, org, com, biz, net, edu, mil, gov, info
 
 namespaceRentalFeeSinkPublicKey = {{namespace_rental_fee_sink_public_key}}
@@ -92,6 +98,10 @@ maxChildNamespaces = 500
 [plugin:catapult.plugins.restrictionaccount]
 
 maxAccountRestrictionValues = 512
+
+[plugin:catapult.plugins.restrictionmosaic]
+
+maxMosaicRestrictionValues = 20
 
 [plugin:catapult.plugins.transfer]
 
